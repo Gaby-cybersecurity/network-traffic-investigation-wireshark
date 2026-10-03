@@ -1,0 +1,52 @@
+SOC PROJECT 2 - IOC / ARTIFACT SUMMARY
+======================================
+
+Investigation Type:
+Suspicious PowerShell Execution
+
+PowerShell Process:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Process ID:
+15656
+
+Parent Process ID:
+14496
+
+Command-Line Indicator:
+-NoProfile -EncodedCommand
+
+User Context:
+DESKTOP-0PSIGGP\USER
+
+Integrity Level:
+High
+
+Working Directory:
+C:\SOC_Project2\
+
+Sysmon Event:
+Event ID 1 - Process Create
+
+Event Timestamp:
+9/28/2026 2:49:29 AM
+
+Observed Process SHA256:
+8BB6FA8C283B4D92120B1FE249A9B311B0F804D4CABBE9981159976C8BE76A5E
+
+Decoded Command Output:
+SOC Project 2 - Suspicious PowerShell Test
+
+IOC Assessment:
+The observed PowerShell execution contains a suspicious investigation indicator
+(-EncodedCommand), but the available laboratory evidence does not establish
+the activity as malicious.
+
+The observed SHA256 is preserved as an investigation artifact. It is not
+classified as malicious based solely on this investigation.
+
+No confirmed malicious IOC was established.
+
+Correlation Result:
+Additional searches did not produce confirmed events directly correlating
+to the investigated process ID or queried event types.

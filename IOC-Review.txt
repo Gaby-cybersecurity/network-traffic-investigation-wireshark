@@ -1,0 +1,84 @@
+SOC PROJECT 2 — IOC REVIEW
+
+Purpose
+-------
+Review artifacts identified during the investigation and distinguish
+confirmed indicators from investigation artifacts.
+
+Potential Artifacts
+-------------------
+
+1. PowerShell executable
+   Path:
+   C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+   Assessment:
+   Legitimate Windows PowerShell executable. Not treated as an IOC
+   by itself.
+
+2. Command-line parameter
+   -EncodedCommand
+
+   Assessment:
+   Suspicious/interesting execution characteristic requiring investigation.
+   It is an indicator of technique or behavior, not a standalone IOC.
+
+3. PowerShell Process ID
+   15656
+
+   Assessment:
+   Process-specific investigation artifact. Not an IOC because the PID
+   is temporary and specific to this execution.
+
+4. Parent Process ID
+   14496
+
+   Assessment:
+   Process-correlation artifact. Not an IOC by itself.
+
+5. Working Directory
+   C:\SOC_Project2\
+
+   Assessment:
+   Laboratory project directory. Not considered malicious based on
+   the available evidence.
+
+6. User Context
+   DESKTOP-0PSIGGP\USER
+
+   Assessment:
+   Account context associated with the execution. No evidence in this
+   investigation establishes the account as compromised.
+
+7. SHA256
+   8BB6FA8C283B4D92120B1FE249A9B311B0F804D4CABBE9981159976C8BE76A5E
+
+   Assessment:
+   Hash associated with the observed PowerShell process. Preserve as
+   evidence for investigation and potential future comparison.
+   The available laboratory evidence does not establish this hash as
+   malicious.
+
+8. Decoded Command
+   SOC Project 2 - Suspicious PowerShell Test
+
+   Assessment:
+   Controlled laboratory test output. Not considered malicious content.
+
+Conclusion
+----------
+The investigation identified a suspicious PowerShell execution pattern,
+primarily the use of -EncodedCommand.
+
+No confirmed malicious IOC was established from the available evidence.
+
+The SHA256 hash and process information should nevertheless be preserved
+as investigation artifacts for future comparison or enrichment.
+
+Overall Finding
+---------------
+Suspicious PowerShell behavior was successfully detected, extracted,
+decoded, and investigated in a controlled laboratory environment.
+
+The evidence demonstrates the investigation workflow without establishing
+that the activity was malicious.

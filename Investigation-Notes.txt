@@ -1,0 +1,53 @@
+SOC PROJECT 2 — INVESTIGATION NOTES
+
+Investigation Focus
+-------------------
+Suspicious PowerShell execution involving an encoded command.
+
+Key Evidence
+------------
+1. Sysmon Event ID 1 recorded creation of a PowerShell process.
+2. PowerShell executable:
+   C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+3. Command line included:
+   -NoProfile -EncodedCommand
+4. PowerShell process ID:
+   15656
+5. Parent process ID:
+   14496
+6. User context:
+   DESKTOP-0PSIGGP\USER
+7. Integrity level:
+   High
+8. Working directory:
+   C:\SOC_Project2\
+9. Sysmon event timestamp:
+   9/28/2026 2:49:29 AM
+10. The encoded PowerShell command was successfully decoded.
+11. Decoded test output:
+   SOC Project 2 - Suspicious PowerShell Test
+
+Correlation Results
+-------------------
+Additional searches were performed against the Windows PowerShell
+Operational log and Sysmon Operational log.
+
+Some searches returned no matching events for the specific process IDs
+or event types queried. Therefore, no additional correlated event was
+confirmed from those searches.
+
+Initial Assessment
+-------------------
+The use of PowerShell with -EncodedCommand is a notable investigation
+indicator because encoded PowerShell commands can conceal the readable
+command from casual inspection.
+
+However, the decoded command in this controlled laboratory exercise
+produced the expected project test message. The evidence therefore
+documents suspicious-looking PowerShell execution in a controlled
+environment rather than establishing malicious activity.
+
+Next Investigation Step
+-----------------------
+Preserve the relevant screenshots and event output as evidence, then
+construct the investigation timeline and final incident report.

@@ -1,0 +1,268 @@
+SOC ANALYST INCIDENT INVESTIGATION REPORT
+=========================================
+
+Case Title:
+Suspicious PowerShell Execution Investigation
+
+Case Type:
+Endpoint / PowerShell Investigation
+
+Environment:
+Controlled Windows Laboratory Environment
+
+Investigation Date:
+9/28/2026
+
+-----------------------------------------
+1. EXECUTIVE SUMMARY
+-----------------------------------------
+
+A suspicious PowerShell process execution was identified through
+Sysmon Event ID 1 (Process Create).
+
+The observed PowerShell process used the -EncodedCommand parameter,
+which is an investigation-relevant indicator because encoded PowerShell
+can conceal command content from straightforward visual inspection.
+
+The encoded command was extracted from the Sysmon event and successfully
+decoded. The decoded output was:
+
+SOC Project 2 - Suspicious PowerShell Test
+
+The investigation was performed in a controlled laboratory environment.
+The decoded command produced the expected test output.
+
+Additional correlation searches were performed against the Windows
+PowerShell Operational log and Sysmon Operational log. These searches
+did not produce additional confirmed events directly correlating to
+the investigated process ID or queried event types.
+
+Based on the available evidence, the activity is documented as
+suspicious-looking PowerShell execution within a controlled laboratory
+exercise. The available evidence does not establish malicious activity.
+
+-----------------------------------------
+2. DETECTION DETAILS
+-----------------------------------------
+
+Detection Source:
+Microsoft Sysmon Operational Log
+
+Event ID:
+1 - Process Create
+
+Event Timestamp:
+9/28/2026 2:49:29 AM
+
+Observed Process:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Process ID:
+15656
+
+Parent Process ID:
+14496
+
+User Context:
+DESKTOP-0PSIGGP\USER
+
+Integrity Level:
+High
+
+Working Directory:
+C:\SOC_Project2\
+
+-----------------------------------------
+3. COMMAND-LINE ANALYSIS
+-----------------------------------------
+
+Observed Command-Line Indicator:
+
+-NoProfile -EncodedCommand
+
+The use of -EncodedCommand caused the PowerShell command content
+to be represented in encoded form rather than directly readable
+from the process command line.
+
+The encoded content was extracted from the Sysmon Event ID 1 record.
+
+The Base64-encoded content was successfully decoded.
+
+Decoded Output:
+
+SOC Project 2 - Suspicious PowerShell Test
+
+-----------------------------------------
+4. PROCESS ANALYSIS
+-----------------------------------------
+
+PowerShell executable:
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Process ID:
+
+15656
+
+Parent Process ID:
+
+14496
+
+Parent Image:
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+The available evidence shows the investigated PowerShell process
+was associated with another PowerShell process as its parent.
+
+The process was executed under the identified laboratory user context
+with High integrity.
+
+-----------------------------------------
+5. TIMELINE
+-----------------------------------------
+
+02:49:29 AM
+Sysmon recorded creation of the PowerShell process.
+
+02:49:29 AM
+The encoded PowerShell command was extracted from the Sysmon
+process-creation event.
+
+02:49:29 AM
+The Base64-encoded command was successfully decoded.
+
+02:49:29 AM
+The decoded command produced the expected laboratory test output.
+
+Following the initial event:
+Additional correlation searches were performed against the Windows
+PowerShell Operational log and Sysmon Operational log.
+
+The searches did not produce additional confirmed events directly
+correlating to the investigated process ID or queried event types.
+
+-----------------------------------------
+6. CORRELATION RESULTS
+-----------------------------------------
+
+Correlation searches were performed against:
+
+- Microsoft-Windows-Sysmon/Operational
+- Windows PowerShell Operational logging
+
+The investigated process ID and related event information were queried.
+
+No additional confirmed correlated events were identified from the
+searches performed.
+
+This result limits the available evidence for establishing additional
+activity associated with the investigated PowerShell process.
+
+-----------------------------------------
+7. IOC / ARTIFACT SUMMARY
+-----------------------------------------
+
+PowerShell Process:
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Process ID:
+
+15656
+
+Parent Process ID:
+
+14496
+
+Command-Line Indicator:
+
+-NoProfile -EncodedCommand
+
+Observed SHA256:
+
+8BB6FA8C283B4D92120B1FE249A9B311B0F804D4CABBE9981159976C8BE76A5E
+
+Decoded Command:
+
+SOC Project 2 - Suspicious PowerShell Test
+
+IOC Assessment:
+
+The use of -EncodedCommand is treated as an investigation indicator.
+
+The observed SHA256 is preserved as an investigation artifact.
+The available laboratory evidence does not establish the hash as
+malicious.
+
+No confirmed malicious IOC was established during this investigation.
+
+-----------------------------------------
+8. INVESTIGATION ASSESSMENT
+-----------------------------------------
+
+The investigation identified a suspicious PowerShell execution pattern,
+primarily due to the use of -EncodedCommand.
+
+Encoded PowerShell commands can conceal readable command content and
+therefore warrant investigation in a SOC environment.
+
+In this controlled laboratory exercise, however, the decoded command
+produced the expected project test message.
+
+The evidence therefore demonstrates the investigation and analysis
+workflow for suspicious PowerShell activity without establishing that
+the observed activity was malicious.
+
+-----------------------------------------
+9. CONCLUSION
+-----------------------------------------
+
+The investigation successfully identified, extracted, decoded, and
+analyzed a suspicious-looking PowerShell execution.
+
+The available evidence does not establish confirmed malicious activity.
+
+The process information, SHA256 hash, encoded command indicator,
+decoded output, and timeline should be preserved as investigation
+artifacts for future comparison, enrichment, or additional analysis.
+
+-----------------------------------------
+10. RECOMMENDED SOC ACTIONS
+-----------------------------------------
+
+If equivalent activity were observed on a production endpoint, an
+analyst should:
+
+1. Review the complete PowerShell command and decoded content.
+2. Identify the initiating user and parent process.
+3. Correlate the process with authentication, network, and endpoint
+   telemetry.
+4. Review surrounding process creation events.
+5. Investigate associated files and hashes.
+6. Determine whether the activity is authorized or expected.
+7. Preserve relevant evidence before making containment decisions.
+8. Escalate the investigation if additional malicious indicators
+   are identified.
+
+-----------------------------------------
+FINAL INVESTIGATION STATUS
+-----------------------------------------
+
+Evidence collected: YES
+PowerShell execution identified: YES
+Encoded command extracted: YES
+Encoded command decoded: YES
+Correlation performed: YES
+Timeline documented: YES
+Confirmed malicious IOC established: NO
+
+Overall Finding:
+
+Suspicious PowerShell behavior was successfully detected, extracted,
+decoded, and investigated in a controlled laboratory environment.
+The available evidence does not establish the activity as malicious.
+
+=========================================
+END OF REPORT
+=========================================

@@ -1,0 +1,78 @@
+SOC PROJECT 2 — INVESTIGATION TIMELINE
+
+Date: 28 September 2026
+
+Timeline
+--------
+
+02:49:29 AM
+Sysmon Event ID 1 recorded creation of a PowerShell process.
+
+Process:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+Process ID:
+15656
+
+Parent Process ID:
+14496
+
+User:
+DESKTOP-0PSIGGP\USER
+
+Integrity Level:
+High
+
+Command-line indicators:
+-NoProfile
+-EncodedCommand
+
+02:49:29 AM
+The PowerShell process was observed executing from:
+
+C:\SOC_Project2\
+
+02:49:29 AM
+The encoded PowerShell command was extracted from the Sysmon
+process-creation event.
+
+02:49:29 AM
+The Base64-encoded command was decoded successfully.
+
+Decoded output:
+SOC Project 2 - Suspicious PowerShell Test
+
+02:49:29 AM
+The decoded command produced the expected test output in the
+controlled laboratory environment.
+
+Correlation Phase
+-----------------
+Additional searches were performed against the Windows PowerShell
+Operational and Sysmon Operational logs.
+
+The searches did not produce additional confirmed events directly
+correlating to the investigated process ID or the queried event types.
+
+Investigation Interpretation
+----------------------------
+The execution contains a notable PowerShell investigation indicator:
+-EncodedCommand.
+
+Encoded PowerShell commands can conceal command content from simple
+visual inspection and therefore warrant investigation.
+
+In this laboratory exercise, however, the decoded command produced
+the expected project test message. The available evidence does not
+by itself establish malicious activity.
+
+Current Investigation Status
+----------------------------
+Evidence collected.
+PowerShell execution identified.
+Encoded command extracted and decoded.
+Initial correlation completed.
+Timeline documented.
+
+Next:
+IOC review and final incident-report preparation.
