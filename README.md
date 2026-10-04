@@ -108,7 +108,7 @@ The indicators were assessed within the context of the controlled laboratory env
 
 The investigation produced several forms of supporting evidence:
 
-- PCAPNG network capture
+- - PCAPNG network capture — [Download Wireshark Capture](https://github.com/Gaby-cybersecurity/network-traffic-investigation-wireshark/releases/tag/v1.0-wireshark-capture)
 - Wireshark packet analysis
 - HTTP request evidence
 - HTTP response evidence
