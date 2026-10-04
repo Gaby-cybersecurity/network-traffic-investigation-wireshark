@@ -1,0 +1,7 @@
+# Network Capture
+
+The original Wireshark PCAPNG capture used for this investigation is retained locally because the file exceeds GitHub's standard web upload limit.
+
+The capture was used during the network traffic investigation documented in this repository.
+
+Supporting investigation notes, timeline, IOC analysis, findings, and incident documentation are included in the repository.
